@@ -39,15 +39,22 @@ class _SpeedState extends State<Speed> {
         child: Column(
           children: <Widget>[
             new Padding(
-                padding: const EdgeInsets.all(65.0),
-                child: FlatButton(
-                    onPressed: () {
-                      positionBloc.add(PostionEvent.currantpositionchanged);
-                    },
-                    child: Text("Current Speed",
-                        style: TextStyle(
-                          fontSize: 30,
-                        )))),
+              padding: const EdgeInsets.all(65.0),
+              child: Text("Current Speed",
+                  style: TextStyle(
+                    fontSize: 30,
+                  )),
+              // child: FlatButton(
+              //     onPressed: () {
+              //       positionBloc.add(PostionEvent.currantpositionchanged);
+              //     },
+              //     child: Text("Current Speed",
+              //         style: TextStyle(
+              //           fontSize: 30,
+              //         )
+              //         )
+              //         )
+            ),
             BlocBuilder<PositionBloc, Position>(
               bloc: positionBloc,
               builder: (context, state) {
@@ -60,8 +67,15 @@ class _SpeedState extends State<Speed> {
                   } else {
                     speedOfCurrentPostion = 0.0;
                   }
-
-                  return Text('$speedOfCurrentPostion',
+                  return Text(
+                      // '$speedOfCurrentPostion'
+                      (() {
+                        if (state != null)
+                          return '${((18 / 5) * (state.speed)).roundToDouble()}';
+                        else {
+                          return '..';
+                        }
+                      }()),
                       style: TextStyle(
                         fontSize: 70,
                         fontFamily: "Digital",
@@ -84,15 +98,22 @@ class _SpeedState extends State<Speed> {
                       fontSize: 25,
                     ))),
             new Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: FlatButton(
-                    onPressed: () {
-                      positionBloc.add(PostionEvent.lastpositionchanged);
-                    },
-                    child: Text("From 10 to 30",
-                        style: TextStyle(
-                          fontSize: 30,
-                        )))),
+              padding: const EdgeInsets.all(15.0),
+              child: Text("From 10 to 30",
+                  style: TextStyle(
+                    fontSize: 30,
+                  )),
+              // FlatButton(
+              //     onPressed: () {
+              //       positionBloc.add(PostionEvent.lastpositionchanged);
+              //     },
+              //     child: Text("From 10 to 30",
+              //         style: TextStyle(
+              //           fontSize: 30,
+              //         )
+              //         )
+              //         )
+            ),
             BlocBuilder<PositionBloc, Position>(
               bloc: positionBloc,
               builder: (context, state) {
@@ -113,7 +134,15 @@ class _SpeedState extends State<Speed> {
 
                     int timeBtween = timeofCurrentSpeed - timeoflastSpeed;
 
-                    return Text('$timeBtween',
+                    return Text(
+                      // '$timeBtween',
+                     (() {
+                        if (state != null)
+                          return '${timeBtween}';
+                        else {
+                          return '..';
+                        }
+                      }()),
                         style: TextStyle(
                           fontSize: 70,
                           fontFamily: "Digital",
@@ -144,14 +173,21 @@ class _SpeedState extends State<Speed> {
                     ))),
             new Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: FlatButton(
-                    onPressed: () {
-                      positionBloc.add(PostionEvent.lastpositionchanged);
-                    },
-                    child: Text("From 30 to 10",
+                child:  Text("From 30 to 10",
                         style: TextStyle(
                           fontSize: 30,
-                        )))),
+                        )),
+                // FlatButton(
+                //     onPressed: () {
+                //       positionBloc.add(PostionEvent.lastpositionchanged);
+                //     },
+                //     child:
+                //      Text("From 30 to 10",
+                //         style: TextStyle(
+                //           fontSize: 30,
+                //         ))
+                //         )
+                        ),
             BlocBuilder<PositionBloc, Position>(
               bloc: positionBloc,
               builder: (context, state) {
@@ -172,7 +208,15 @@ class _SpeedState extends State<Speed> {
 
                     int timeBtween = timeofCurrentSpeed - timeoflastSpeed;
 
-                    return Text('$timeBtween',
+                    return Text(
+                      //'$timeBtween',
+                         (() {
+                        if (state != null)
+                          return '${timeBtween}';
+                        else {
+                          return '..';
+                        }
+                      }()),
                         style: TextStyle(
                           fontSize: 70,
                           fontFamily: "Digital",
